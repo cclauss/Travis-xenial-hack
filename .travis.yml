@@ -1,0 +1,53 @@
+os: linux
+dist: trusty
+sudo: false
+
+addons:
+  apt:
+    update: true
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - build-essential
+      - software-properties-common
+      - gdb
+      - python-dbg
+      - python3-dbg
+      - gcc-8
+      - g++-8
+
+cache:
+  pip: true
+  directories:
+    - $HOME/.ccache
+
+language: python
+python:
+  - 3.6
+  #- 3.7  Done in the matrix below
+
+env:
+  global:
+    - USE_CCACHE=1
+    - CCACHE_SLOPPINESS=pch_defines,time_macros
+    - CCACHE_COMPRESS=1
+    - CCACHE_MAXSIZE=150M
+    - PATH="/usr/lib/ccache:$HOME/gcc-symlinks:$PATH"
+  matrix:
+    - BACKEND=c
+    - BACKEND=cpp
+
+matrix:
+  include:
+    - python: 3.7
+      env: BACKEND=c PY=3
+      dist: xenial  # Required for Python 3.7
+      sudo: true    # travis-ci/travis-ci#9069
+    - python: 3.7
+      env: BACKEND=cpp PY=3
+      dist: xenial  # Required for Python 3.7
+      sudo: true    # travis-ci/travis-ci#9069
+
+install: python -c 'import sys; print("Python %s" % (sys.version,))'
+
+script: python --version ; pip --version
