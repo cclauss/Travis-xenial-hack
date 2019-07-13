@@ -62,7 +62,7 @@ class SupportVectorMachine:
         self.weight = 0
         self.bias = 0
 
-    def hinge_loss(self, X, Y, weight, bias):
+    def hinge_loss(self, X, Y, weight, bias):  # hingeloss() --> hinge_loss() for readability
         loss = 0.5 * np.dot(weight.T, weight)[0][0]  # explain why this make a good starting point
         for i, x in enumerate(X.shape[0]):
             tile = Y[i] * (np.dot(x.reshape(1, -1), weight) + bias)
