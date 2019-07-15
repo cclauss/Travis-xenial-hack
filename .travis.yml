@@ -38,32 +38,32 @@ language: bash
 matrix:
   include:
     - name: "pyenv global 2.7 on trusty"
-      pyenv global 2.7
+      before_install: pyenv global 2.7
       dist: trusty
     - name: "pyenv global 2.7.15 on trusty"
-      pyenv global 2.7.15
+      before_install: pyenv global 2.7.15
       dist: trusty
     - name: "pyenv global 3.6 on trusty"
-      pyenv global 3.6
+      before_install: pyenv global 3.6
       dist: trusty
     - name: "pyenv global 3.6.7 on trusty"
-      pyenv global 3.6.7
+      before_install: pyenv global 3.6.7
       dist: trusty
 
     - name: "pyenv global 2.7 on xenial"
-      pyenv global 2.7
+      before_install: pyenv global 2.7
       dist: xenial
     - name: "pyenv global 2.7.15 on xenial"
-      pyenv global 2.7.15
+      before_install: pyenv global 2.7.15
       dist: xenial
     - name: "pyenv global 3.7 on xenial"
-      pyenv global 3.7
+      before_install: pyenv global 3.7
       dist: xenial
     - name: "pyenv global 3.7.1 on xenial"
-      pyenv global 3.7.1
+      before_install: pyenv global 3.7.1
       dist: xenial
     - name: "pyenv global 3.7.3 on xenial"
-      pyenv global 3.7.3
+      before_install: pyenv global 3.7.3
       dist: xenial
 
 install: python -c 'import sys ; print("Python {}".format(sys.version))'
