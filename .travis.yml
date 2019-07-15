@@ -1,4 +1,4 @@
-language: bash
+language: cpp  # not bash
 
 #addons:
 #  apt:
