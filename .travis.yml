@@ -38,7 +38,7 @@ language: bash
 matrix:
   include:
     - name: "pyenv global 2.7 on trusty"
-      before_install: pyenv global 2.7
+      before_install: pyenv install --list ; pyenv global 2.7
       dist: trusty
     - name: "pyenv global 2.7.15 on trusty"
       before_install: pyenv global 2.7.15
@@ -51,7 +51,7 @@ matrix:
       dist: trusty
 
     - name: "pyenv global 2.7 on xenial"
-      before_install: pyenv global 2.7
+      before_install: pyenv install --list ; pyenv global 2.7
       dist: xenial
     - name: "pyenv global 2.7.15 on xenial"
       before_install: pyenv global 2.7.15
