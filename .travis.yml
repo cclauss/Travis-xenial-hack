@@ -38,11 +38,23 @@ language: bash
 matrix:
   include:
     - language: python  # 3.6.7
+      dist: trusty
     - language: python  # 2.7.15
       python: 2.7
+      dist: trusty
     - language: python  # 3.7.1
       python: 3.7
-    
+      dist: trusty
+   
+    - language: python  # 3.6.7
+      dist: xenial
+    - language: python  # 2.7.15
+      python: 2.7
+      dist: xenial
+    - language: python  # 3.7.1
+      python: 3.7
+      dist: xenial
+
     #- name: "pyenv global 2.7 on trusty"
     #  before_install: pyenv install --list ; pyenv global 2.7
     #  dist: trusty
