@@ -37,6 +37,14 @@ language: bash
 
 matrix:
   include:
+    # No dist
+    - language: python  # 3.6.7
+    - language: python  # 2.7.15
+      python: 2.7
+    - language: python  # 3.7.1
+      python: 3.7
+
+    # dist: trusty
     - language: python  # 3.6.7
       dist: trusty
     - language: python  # 2.7.15
@@ -45,7 +53,8 @@ matrix:
     - language: python  # 3.7.1
       python: 3.7
       dist: trusty
-   
+
+    # dist: xenial
     - language: python  # 3.6.7
       dist: xenial
     - language: python  # 2.7.15
