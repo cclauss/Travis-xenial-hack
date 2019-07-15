@@ -37,33 +37,30 @@ language: bash
 
 matrix:
   include:
-    - name: "pyenv global 2.7 on trusty"
-      before_install: pyenv install --list ; pyenv global 2.7
+    #- name: "pyenv global 2.7 on trusty"
+    #  before_install: pyenv install --list ; pyenv global 2.7
+    #  dist: trusty
+    - name: "pyenv global 2.7.14 on trusty"
+      before_install: pyenv global 2.7.14
       dist: trusty
-    - name: "pyenv global 2.7.15 on trusty"
-      before_install: pyenv global 2.7.15
-      dist: trusty
-    - name: "pyenv global 3.6 on trusty"
-      before_install: pyenv global 3.6
-      dist: trusty
-    - name: "pyenv global 3.6.7 on trusty"
-      before_install: pyenv global 3.6.7
+    #- name: "pyenv global 3.6 on trusty"
+    #  before_install: pyenv global 3.6
+    #  dist: trusty
+    - name: "pyenv global 3.6.3 on trusty"
+      before_install: pyenv global 3.6.3
       dist: trusty
 
-    - name: "pyenv global 2.7 on xenial"
-      before_install: pyenv install --list ; pyenv global 2.7
+    #- name: "pyenv global 2.7 on xenial"
+    #  before_install: pyenv install --list ; pyenv global 2.7
+    #  dist: xenial
+    - name: "pyenv global 2.7.14 on xenial"
+      before_install: pyenv global 2.7.14
       dist: xenial
-    - name: "pyenv global 2.7.15 on xenial"
-      before_install: pyenv global 2.7.15
-      dist: xenial
-    - name: "pyenv global 3.7 on xenial"
-      before_install: pyenv global 3.7
-      dist: xenial
-    - name: "pyenv global 3.7.1 on xenial"
-      before_install: pyenv global 3.7.1
-      dist: xenial
-    - name: "pyenv global 3.7.3 on xenial"
-      before_install: pyenv global 3.7.3
+    #- name: "pyenv global 3.7 on xenial"
+    #  before_install: pyenv global 3.7
+    #  dist: xenial
+    - name: "pyenv global 3.6.3 on xenial"
+      before_install: pyenv global 3.6.3
       dist: xenial
 
 install: python -c 'import sys ; print("Python {}".format(sys.version))'
