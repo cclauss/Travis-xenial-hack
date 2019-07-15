@@ -1,53 +1,73 @@
-os: linux
-dist: trusty
-sudo: false
+language: bash
 
-addons:
-  apt:
-    update: true
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - build-essential
-      - software-properties-common
-      - gdb
-      - python-dbg
-      - python3-dbg
-      - gcc-8
-      - g++-8
+#addons:
+#  apt:
+#    update: true
+#    sources:
+#      - ubuntu-toolchain-r-test
+#    packages:
+#      - build-essential
+#      - software-properties-common
+#      - gdb
+#      - python-dbg
+#      - python3-dbg
+#      - gcc-8
+#      - g++-8
 
-cache:
-  pip: true
-  directories:
-    - $HOME/.ccache
+#cache:
+#  pip: true
+#  directories:
+#    - $HOME/.ccache
 
-language: python
-python:
-  - 3.6
-  #- 3.7  Done in the matrix below
+#language: python
+#python:
+#  - 3.6
+#  - 3.7  Done in the matrix below
 
-env:
-  global:
-    - USE_CCACHE=1
-    - CCACHE_SLOPPINESS=pch_defines,time_macros
-    - CCACHE_COMPRESS=1
-    - CCACHE_MAXSIZE=150M
-    - PATH="/usr/lib/ccache:$HOME/gcc-symlinks:$PATH"
-  matrix:
-    - BACKEND=c
-    - BACKEND=cpp
+#env:
+#  global:
+#    - USE_CCACHE=1
+#    - CCACHE_SLOPPINESS=pch_defines,time_macros
+#    - CCACHE_COMPRESS=1
+#    - CCACHE_MAXSIZE=150M
+#    - PATH="/usr/lib/ccache:$HOME/gcc-symlinks:$PATH"
+#  matrix:
+#    - BACKEND=c
+#    - BACKEND=cpp
 
 matrix:
   include:
-    - python: 3.7
-      env: BACKEND=c PY=3
-      dist: xenial  # Required for Python 3.7
-      sudo: true    # travis-ci/travis-ci#9069
-    - python: 3.7
-      env: BACKEND=cpp PY=3
-      dist: xenial  # Required for Python 3.7
-      sudo: true    # travis-ci/travis-ci#9069
+    - name: "pyenv global 2.7 on trusty"
+      pyenv global 2.7
+      dist: trusty
+    - name: "pyenv global 2.7.15 on trusty"
+      pyenv global 2.7.15
+      dist: trusty
+    - name: "pyenv global 3.6 on trusty"
+      pyenv global 3.6
+      dist: trusty
+    - name: "pyenv global 3.6.7 on trusty"
+      pyenv global 3.6.7
+      dist: trusty
 
-install: python -c 'import sys; print("Python %s" % (sys.version,))'
+    - name: "pyenv global 2.7 on xenial"
+      pyenv global 2.7
+      dist: xenial
+    - name: "pyenv global 2.7.15 on xenial"
+      pyenv global 2.7.15
+      dist: xenial
+    - name: "pyenv global 3.7 on xenial"
+      pyenv global 3.7
+      dist: xenial
+    - name: "pyenv global 3.7.1 on xenial"
+      pyenv global 3.7.1
+      dist: xenial
+    - name: "pyenv global 3.7.3 on xenial"
+      pyenv global 3.7.3
+      dist: xenial
 
-script: python --version ; pip --version
+install: python -c 'import sys ; print("Python {}".format(sys.version))'
+
+before_script: python --version ; pip --version
+
+script: pyenv install --list
