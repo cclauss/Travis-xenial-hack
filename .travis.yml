@@ -90,6 +90,16 @@ matrix:
       before_install: pyenv install --list ; pyenv global 3.6.3
       dist: xenial
 
+    - name: "pyenv global 2.7.14 on bionic"
+      before_install: pyenv install --list ; pyenv global 2.7.14
+      dist: bionic
+    - name: "pyenv global 2.7.14 on cosmic"
+      before_install: pyenv install --list ; pyenv global 2.7.14
+      dist: cosmic    
+    - name: "pyenv global 2.7.14 on disco"
+      before_install: pyenv install --list ; pyenv global 2.7.14
+      dist: disco
+
 install: python -c 'import sys ; print("Python {}".format(sys.version))'
 
 before_script: python --version ; pip --version
