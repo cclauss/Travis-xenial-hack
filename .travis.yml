@@ -37,6 +37,26 @@ language: cpp  # not bash
 
 matrix:
   include:
+    - apt:
+        update: true
+        packages:
+          - python3
+    - apt:
+        update: true
+        packages:
+          - python-dev
+    - apt:
+        update: true
+        packages:
+          - python3-dev
+    - apt:
+        update: true
+        packages:
+          - python-pip
+    - apt:
+        update: true
+        packages:
+          - python3-pip
     # No dist
     - language: python  # 3.6.7
     - language: python  # 2.7.15
