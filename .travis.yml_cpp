@@ -1,0 +1,141 @@
+language: cpp  # not bash
+
+#addons:
+#  apt:
+#    update: true
+#    sources:
+#      - ubuntu-toolchain-r-test
+#    packages:
+#      - build-essential
+#      - software-properties-common
+#      - gdb
+#      - python-dbg
+#      - python3-dbg
+#      - gcc-8
+#      - g++-8
+
+#cache:
+#  pip: true
+#  directories:
+#    - $HOME/.ccache
+
+#language: python
+#python:
+#  - 3.6
+#  - 3.7  Done in the matrix below
+
+#env:
+#  global:
+#    - USE_CCACHE=1
+#    - CCACHE_SLOPPINESS=pch_defines,time_macros
+#    - CCACHE_COMPRESS=1
+#    - CCACHE_MAXSIZE=150M
+#    - PATH="/usr/lib/ccache:$HOME/gcc-symlinks:$PATH"
+#  matrix:
+#    - BACKEND=c
+#    - BACKEND=cpp
+
+matrix:
+  include:
+    - addons:
+        apt:
+          update: true
+          packages:
+            - python3
+    - addons:
+        apt:
+          update: true
+          packages:
+            - python-dev
+    - addons:
+        apt:
+          update: true
+          packages:
+            - python3-dev
+    - addons:
+        apt:
+          update: true
+          packages:
+            - python-pip
+    - addons:
+        apt:
+          update: true
+          packages:
+            - python3-pip
+    # No dist
+    - env: DEFAULT=true
+    - language: python  # 3.6.7
+    - language: python  # 2.7.15
+      python: 2.7
+    - language: python  # 3.7.1
+      python: 3.7
+
+    # dist: trusty
+    - language: python  # 3.6.7
+      dist: trusty
+    - language: python  # 2.7.15
+      python: 2.7
+      dist: trusty
+    - language: python  # 3.7.1
+      python: 3.7
+      dist: trusty
+
+    # dist: xenial
+    - language: python  # 3.6.7
+      dist: xenial
+    - language: python  # 2.7.15
+      python: 2.7
+      dist: xenial
+    - language: python  # 3.6.5
+      dist: xenial
+    - language: python  # 3.7.1
+      python: 3.7
+      dist: xenial
+    - language: python  # 3.8.0
+      python: 3.8
+      dist: xenial
+    - language: python  # 3.9
+      python: 3.9-dev
+      dist: xenial
+
+    #- name: "pyenv global 2.7 on trusty"
+    #  before_install: pyenv install --list ; pyenv global 2.7
+    #  dist: trusty
+    - name: "pyenv global 2.7.14 on trusty"
+      before_install: pyenv install --list ; pyenv global 2.7.14
+      dist: trusty
+    #- name: "pyenv global 3.6 on trusty"
+    #  before_install: pyenv global 3.6
+    #  dist: trusty
+    - name: "pyenv global 3.6.3 on trusty"
+      before_install: pyenv install --list ; pyenv global 3.6.3
+      dist: trusty
+
+    #- name: "pyenv global 2.7 on xenial"
+    #  before_install: pyenv install --list ; pyenv global 2.7
+    #  dist: xenial
+    - name: "pyenv global 2.7.14 on xenial"
+      before_install: pyenv install --list ; pyenv global 2.7.14
+      dist: xenial
+    #- name: "pyenv global 3.7 on xenial"
+    #  before_install: pyenv global 3.7
+    #  dist: xenial
+    - name: "pyenv global 3.6.3 on xenial"
+      before_install: pyenv install --list ; pyenv global 3.6.3
+      dist: xenial
+
+    - name: "pyenv global 2.7.14 on bionic"
+      before_install: pyenv install --list ; pyenv global 2.7.14
+      dist: bionic
+    - name: "pyenv global 2.7.14 on cosmic"
+      before_install: pyenv install --list ; pyenv global 2.7.14
+      dist: cosmic    
+    - name: "pyenv global 2.7.14 on disco"
+      before_install: pyenv install --list ; pyenv global 2.7.14
+      dist: disco
+
+install: python -c 'import sys ; print("Python {}".format(sys.version))'
+
+before_script: python --version ; pip --version
+
+script: pyenv install --list
