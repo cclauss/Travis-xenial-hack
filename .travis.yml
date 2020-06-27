@@ -6,6 +6,6 @@ before_script:
   - python --version
   - pip --version
   - python3 --version || true
-  - pip3 --version || true
+  - python3 -m pip --version || true
 
 script: pyenv install --list
