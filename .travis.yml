@@ -1,0 +1,11 @@
+language: cpp  # not bash
+
+install: true  # python -c 'import sys ; print("Python {}".format(sys.version))'
+
+before_script:
+  - python --version
+  - pip --version
+  - python3 --version || true
+  - pip3 --version || true
+
+script: pyenv install --list
