@@ -2,6 +2,13 @@ os: linux
 dist: focal
 language: shell
 
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - python-gflags
+
 jobs:
   include:
     - dist: trusty
@@ -12,7 +19,7 @@ jobs:
 
 # language: cpp  # not bash
 
-install: true  # python -c 'import sys ; print("Python {}".format(sys.version))'
+# install: true  # python -c 'import sys ; print("Python {}".format(sys.version))'
 
 # before_script:
 #  - python --version
@@ -20,4 +27,4 @@ install: true  # python -c 'import sys ; print("Python {}".format(sys.version))'
 #  - python3 --version || true
 #  - python3 -m pip --version || true
 
-script: pyenv install --list
+# script: pyenv install --list
