@@ -4,18 +4,18 @@ language: shell
 
 addons:
   apt:
-    sources:
-      - ubuntu-toolchain-r-test
     packages:
       - python-gflags
 
 jobs:
   include:
+    - dist: precise
     - dist: trusty
     - dist: xenial
     - dist: bionic
-    - dist: eoan
     - dist: focal
+  allow_failures:
+    - dist: focal  # python-gflags#44
 
 # language: cpp  # not bash
 
