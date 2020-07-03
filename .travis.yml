@@ -2,12 +2,13 @@ os: linux
 dist: focal
 language: shell
 
-dist:
-  - trusty
-  - xenial
-  - bionic
-  - eoan
-  - focal
+jobs:
+  include:
+    - dist: trusty
+    - dist: xenial
+    - dist: bionic
+    - dist: eoan
+    - dist: focal
 
 # language: cpp  # not bash
 
