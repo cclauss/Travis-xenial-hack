@@ -9,6 +9,8 @@ jobs:
     - dist: xenial
     - dist: bionic
     - dist: focal
+  allow_failures:
+    - dist: precise
 
 # install: true  # python -c 'import sys ; print("Python {}".format(sys.version))'
 
